@@ -1,0 +1,30 @@
+/*
+  # Cloudflare Pages _headers file
+  # Controls HTTP headers for all pages
+
+  Cache static assets aggressively, HTML never cached (so updates are instant)
+*/
+
+# HTML — no cache so updates deploy instantly
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# CSS — cache 1 week, bust with filename change
+/css/*
+  Cache-Control: public, max-age=604800, immutable
+
+# JS — cache 1 week
+/js/*
+  Cache-Control: public, max-age=604800, immutable
+
+# Images / assets — cache 1 month
+/assets/*
+  Cache-Control: public, max-age=2592000, immutable
+
+# Security headers — all pages
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-XSS-Protection: 1; mode=block
